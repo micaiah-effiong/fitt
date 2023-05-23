@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from "react-native";
 import { styled } from "nativewind";
 import {
   Image,
@@ -8,19 +8,19 @@ import {
   View,
   SafeAreaView,
 } from "react-native";
-import { Feather, FontAwesome } from "@expo/vector-icons";
+import Feather from "react-native-vector-icons/Feather";
+// import FontAwesome from "react-native-vector-icons/FontAwesome";
 import React, { useRef, useMemo, useCallback, useState } from "react";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import CircularProgress from "react-native-circular-progress-indicator";
-import { useFonts, Montserrat_500Medium } from "@expo-google-fonts/montserrat";
 
 const SIcon = styled(Feather);
-const SFIcon = styled(FontAwesome);
+// const SFIcon = styled(FontAwesome);
 const SView = styled(View);
 const SImage = styled(Image);
 const SBottomSheetView = styled(BottomSheetView);
-const StyledText = styled(Text, "font-montserrat");
+const StyledText = styled(Text, "font-sora");
 
 function StatsCapsule(props: {
   icon: React.ComponentProps<typeof SIcon>["name"];
@@ -32,10 +32,9 @@ function StatsCapsule(props: {
       {...props}
       className={`w-2/5 p-4 bg-sky-100 rounded-md shadow-lg shadow-red-300 ${props.className}`}
     >
-      <StyledText>
-        {" "}
+      <Text className="text-black">
         <SIcon name={props.icon} className="font-bold" /> {props.text}
-      </StyledText>
+      </Text>
     </View>
   );
 }
@@ -45,13 +44,18 @@ export default function App() {
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
   const snapPoints = useMemo(() => ["60%", "90%"], []);
 
-  const [fontsLoaded] = useFonts({
-    Montserrat_500Medium,
-  });
+  // const [fontsLoaded] = useFonts({
+  //   Sora_500Medium,
+  // });
 
   // callbacks
   const handleSheetChanges = useCallback((index: number) => {
     console.log("handleSheetChanges", index);
+  }, []);
+
+  const handleCloseSheet = useCallback(() => {
+    setSheetIsOpen(false);
+    return bottomSheetRef.current?.close();
   }, []);
 
   const handleOpenSheet = useCallback(
@@ -64,19 +68,8 @@ export default function App() {
       setSheetIsOpen(true);
       return bottomSheetRef.current?.snapToIndex(index);
     },
-    [sheetIsOpen]
+    [handleCloseSheet, sheetIsOpen, snapPoints.length]
   );
-
-  const handleCloseSheet = useCallback(() => {
-    setSheetIsOpen(false);
-    return bottomSheetRef.current?.close();
-  }, [sheetIsOpen]);
-
-  if (!fontsLoaded) {
-    return null;
-  } else {
-    console.log("fontsLoaded", { fontsLoaded });
-  }
 
   return (
     // flex-1 items-center justify-center bg-white
@@ -106,8 +99,8 @@ export default function App() {
           <View className="h-auto flex-grow b-purple-600 px-4 bg-[#edd0ff] w-full">
             <View className="space-y-5 w-full">
               <View className="flex flex-col gap-3">
-                <StyledText className="text-md">Welcome back,</StyledText>
-                <StyledText className="text-3xl font-semibold">
+                <Text className="text-md text-black">Welcome back,</Text>
+                <StyledText className="text-3xl font-light text-black">
                   Create your goal for your future
                 </StyledText>
               </View>
@@ -135,14 +128,12 @@ export default function App() {
                   />
                 </View>
                 <View>
-                  <StyledText className="text-white font-semibold text-lg">
+                  <Text className="text-white font-semibold text-lg">
                     Drink 10 cup of waters
-                  </StyledText>
+                  </Text>
                 </View>
                 <View>
-                  <StyledText className="text-white">
-                    06:00am - 06:00pm
-                  </StyledText>
+                  <Text className="text-white">06:00am - 06:00pm</Text>
                 </View>
               </View>
 
@@ -157,20 +148,14 @@ export default function App() {
           {/* <View className=" p-6 bg-slate-500 flex-1"> */}
           <BottomSheet
             ref={bottomSheetRef}
-            index={0}
+            index={-1}
             snapPoints={snapPoints}
             onChange={handleSheetChanges}
             enablePanDownToClose={true}
-            backgroundStyle={{
-              borderRadius: 0,
-              backgroundColor: "#96a4ae7f",
-            }}
-            handleIndicatorStyle={{
-              backgroundColor: "white",
-            }}
+            backgroundStyle={{ borderRadius: 30 }}
           >
             <SBottomSheetView className="px-4 py-2 bg-[#f6fafd] flex-1">
-              <StyledText>Awesome 🎉</StyledText>
+              <Text className="text-black">Awesome 🎉</Text>
             </SBottomSheetView>
           </BottomSheet>
           {/* </View> */}
@@ -213,7 +198,11 @@ export default function App() {
           </View>
         </View>
 
-        <StatusBar style="auto" />
+        <StatusBar
+          translucent
+          backgroundColor={"transparent"}
+          barStyle={"dark-content"}
+        />
       </GestureHandlerRootView>
     </SafeAreaView>
   );
