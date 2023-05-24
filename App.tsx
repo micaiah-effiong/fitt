@@ -15,12 +15,12 @@ import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import CircularProgress from "react-native-circular-progress-indicator";
 
-const SIcon = styled(Feather);
+const SIcon = styled(Feather, "text-black");
 // const SFIcon = styled(FontAwesome);
 const SView = styled(View);
 const SImage = styled(Image);
 const SBottomSheetView = styled(BottomSheetView);
-const StyledText = styled(Text, "font-sora");
+const StyledText = styled(Text, "font-montserrat text-black");
 
 function StatsCapsule(props: {
   icon: React.ComponentProps<typeof SIcon>["name"];
@@ -32,9 +32,9 @@ function StatsCapsule(props: {
       {...props}
       className={`w-2/5 p-4 bg-sky-100 rounded-md shadow-lg shadow-red-300 ${props.className}`}
     >
-      <Text className="text-black">
+      <StyledText>
         <SIcon name={props.icon} className="font-bold" /> {props.text}
-      </Text>
+      </StyledText>
     </View>
   );
 }
@@ -99,17 +99,17 @@ export default function App() {
           <View className="h-auto flex-grow b-purple-600 px-4 bg-[#edd0ff] w-full">
             <View className="space-y-5 w-full">
               <View className="flex flex-col gap-3">
-                <Text className="text-md text-black">Welcome back,</Text>
-                <StyledText className="text-3xl font-light text-black">
+                <StyledText className="text-md ">Welcome back,</StyledText>
+                <StyledText className="text-3xl font-medium ">
                   Create your goal for your future
                 </StyledText>
               </View>
               <View>
-                <View className="w-full rounded-full bg-white p-2 flex-row items-center space-x-3 justify-evenly">
-                  <SIcon name="search" size={22} className="" />
+                <View className="w-full rounded-full bg-white px-2 flex-row items-center space-x-3 justify-evenly">
+                  <SIcon name="search" size={22} />
 
                   <TextInput
-                    className="flex-grow"
+                    className="flex-grow text-black font-montserrat"
                     placeholder="Seach your plans"
                   />
                 </View>
@@ -124,16 +124,20 @@ export default function App() {
                     inActiveStrokeWidth={7}
                     activeStrokeColor={"#ffe667"}
                     clockwise={false}
+                    duration={3000}
+                    activeStrokeSecondaryColor={"#ffe667ff"}
                     progressValueStyle={{ color: "white" }}
                   />
                 </View>
                 <View>
-                  <Text className="text-white font-semibold text-lg">
+                  <StyledText className="text-white font-semibold text-lg">
                     Drink 10 cup of waters
-                  </Text>
+                  </StyledText>
                 </View>
                 <View>
-                  <Text className="text-white">06:00am - 06:00pm</Text>
+                  <StyledText className="text-white">
+                    06:00am - 06:00pm
+                  </StyledText>
                 </View>
               </View>
 
@@ -152,10 +156,16 @@ export default function App() {
             snapPoints={snapPoints}
             onChange={handleSheetChanges}
             enablePanDownToClose={true}
-            backgroundStyle={{ borderRadius: 30 }}
+            backgroundStyle={{
+              borderRadius: 5,
+              backgroundColor: "#f3f3",
+            }}
+            handleIndicatorStyle={{
+              backgroundColor: "#fff",
+            }}
           >
             <SBottomSheetView className="px-4 py-2 bg-[#f6fafd] flex-1">
-              <Text className="text-black">Awesome 🎉</Text>
+              <StyledText>Awesome 🎉</StyledText>
             </SBottomSheetView>
           </BottomSheet>
           {/* </View> */}
