@@ -93,7 +93,7 @@ const Home = ({ navigation }: Props) => {
                   />
                 </View>
               </Pressable>
-              <Pressable onPress={() => handleOpenSheet(0)}>
+              <Pressable onPress={() => navigation.navigate('profile')}>
                 <StyledComponent
                   component={View}
                   className="h-10 w-10 shadow-2xl bg-yellow-100 rounded-full"

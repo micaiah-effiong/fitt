@@ -24,8 +24,8 @@ export default function App() {
           animation: "fade",
         }}
       >
-        <Stack.Screen name="profile" component={Home} />
-        <Stack.Screen name="home" component={Profile} />
+        <Stack.Screen name="profile" component={Profile} />
+        <Stack.Screen name="home" component={Home} />
         <Stack.Screen name="settings" component={Settings} />
       </Stack.Navigator>
     </NavigationContainer>
