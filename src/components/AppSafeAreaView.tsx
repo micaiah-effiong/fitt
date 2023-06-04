@@ -1,22 +1,26 @@
 import { StyledComponent } from "nativewind";
 import { PropsWithChildren } from "react";
-import { SafeAreaView, Platform, StatusBar } from "react-native";
+import { SafeAreaView, Platform, StatusBar, View } from "react-native";
 
 export default ({ children }: PropsWithChildren) => {
-  console.log("current status-bar height", StatusBar.currentHeight);
+
   return (
     <StyledComponent
       component={SafeAreaView}
-      className={`flex-1 bg-[#edd0ff] text-black mt-[${
-        (StatusBar.currentHeight ?? 36) + 1
-      }px]`}
+      className={`flex-1 bg-[#edd0ff] text-black`}
     >
       <StatusBar
         translucent
-        // backgroundColor={"transparent"}
-        // barStyle={"dark-content"}
+        backgroundColor={"transparent"}
+        barStyle={"dark-content"}
       />
-      {children}
+      <StyledComponent component={View} className={"h-full flex"} style={{
+        paddingTop: StatusBar.currentHeight ?? 36
+      }}>
+        <StyledComponent component={View} className={"h-full flex"}>
+          {children}
+        </StyledComponent>
+      </StyledComponent>
     </StyledComponent>
   );
 };

@@ -6,7 +6,7 @@ import AppSafeAreaView from "../components/AppSafeAreaView";
 const Settings = () => {
   return (
     <AppSafeAreaView>
-      <StyledComponent component={View} className="flex">
+      <StyledComponent component={View} className="flex px-4">
         <Text>Settings</Text>
         {/* <Button></Button> */}
       </StyledComponent>

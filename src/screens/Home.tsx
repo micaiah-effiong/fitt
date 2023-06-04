@@ -4,11 +4,8 @@ import React, { useCallback, useMemo, useRef, useState } from "react";
 import {
   Image,
   Pressable,
-  SafeAreaView,
-  StatusBar,
   TextInput,
   View,
-  Text,
 } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -16,8 +13,8 @@ import Feather from "react-native-vector-icons/Feather";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { ParamListBase } from "@react-navigation/native";
 import AppSafeAreaView from "../components/AppSafeAreaView";
+import Text from "../components/Text"
 
-const StyledText = styled(Text, "text-black font-montserrat");
 const StyledIcon = styled(Feather, "text-black");
 
 function StatsCapsule(props: {
@@ -31,15 +28,15 @@ function StatsCapsule(props: {
       {...props}
       className={`w-2/5 flex flex-row space-x-2 items-center p-4 bg-sky-100 rounded-md shadow-lg shadow-red-300 ${props.className}`}
     >
-      <StyledText>
+      <Text>
         {/* <StyledComponent
           component={Feather}
           name={props.icon}
           className="font-bold text-black"
         /> */}
         <StyledIcon size={15} name={props.icon} className="text-black" />
-      </StyledText>
-      <StyledText>{props.text}</StyledText>
+      </Text>
+      <Text>{props.text}</Text>
     </StyledComponent>
   );
 }
@@ -76,16 +73,11 @@ const Home = ({ navigation }: Props) => {
 
   return (
     <AppSafeAreaView>
-      {/* <StatusBar
-        translucent
-        backgroundColor={"transparent"}
-        barStyle={"dark-content"}
-      /> */}
       <StyledComponent component={GestureHandlerRootView} className="flex-1">
         <StyledComponent component={View} className="flex-1 flex">
           <StyledComponent
             component={View}
-            className="h-14 bg-[#edd0ff] mt-7 w-full top-0  px-4"
+            className="h-14 bg-[#edd0ff] w-full px-4"
           >
             <StyledComponent
               component={View}
@@ -124,10 +116,10 @@ const Home = ({ navigation }: Props) => {
           >
             <StyledComponent component={View} className="space-y-5 w-full">
               <StyledComponent component={View} className="flex flex-col gap-3">
-                <StyledText className="text-md">Welcome back,</StyledText>
-                <StyledText className="text-3xl font-medium ">
+                <Text className="text-md">Welcome back,</Text>
+                <Text className="text-3xl font-medium ">
                   Create your goal for your future
-                </StyledText>
+                </Text>
               </StyledComponent>
               <View>
                 <StyledComponent
@@ -166,14 +158,14 @@ const Home = ({ navigation }: Props) => {
                   />
                 </StyledComponent>
                 <View>
-                  <StyledText className="text-white font-semibold text-lg">
+                  <Text className="text-white font-semibold text-lg">
                     Drink 10 cup of waters
-                  </StyledText>
+                  </Text>
                 </View>
                 <View>
-                  <StyledText className="text-white">
+                  <Text className="text-white">
                     06:00am - 06:00pm
-                  </StyledText>
+                  </Text>
                 </View>
               </StyledComponent>
 
@@ -207,7 +199,7 @@ const Home = ({ navigation }: Props) => {
               component={BottomSheetView}
               className="px-4 py-2 bg-[#f6fafd] flex-1"
             >
-              <StyledText>Awesome 🎉</StyledText>
+              <Text>Awesome 🎉</Text>
             </StyledComponent>
           </BottomSheet>
           {/* </View> */}
