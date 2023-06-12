@@ -1,19 +1,14 @@
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { StyledComponent, styled } from "nativewind";
 import React, { useCallback, useMemo, useRef, useState } from "react";
-import {
-  Image,
-  Pressable,
-  TextInput,
-  View,
-} from "react-native";
+import { Image, Pressable, TextInput, View } from "react-native";
 import CircularProgress from "react-native-circular-progress-indicator";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Feather from "react-native-vector-icons/Feather";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { ParamListBase } from "@react-navigation/native";
 import AppSafeAreaView from "../components/AppSafeAreaView";
-import Text from "../components/Text"
+import Text from "../components/Text";
 
 const StyledIcon = styled(Feather, "text-black");
 
@@ -93,7 +88,7 @@ const Home = ({ navigation }: Props) => {
                   />
                 </View>
               </Pressable>
-              <Pressable onPress={() => navigation.navigate('profile')}>
+              <Pressable onPress={() => navigation.navigate("profile")}>
                 <StyledComponent
                   component={View}
                   className="h-10 w-10 shadow-2xl bg-yellow-100 rounded-full"
@@ -163,9 +158,7 @@ const Home = ({ navigation }: Props) => {
                   </Text>
                 </View>
                 <View>
-                  <Text className="text-white">
-                    06:00am - 06:00pm
-                  </Text>
+                  <Text className="text-white">06:00am - 06:00pm</Text>
                 </View>
               </StyledComponent>
 
@@ -203,70 +196,6 @@ const Home = ({ navigation }: Props) => {
             </StyledComponent>
           </BottomSheet>
           {/* </View> */}
-          <StyledComponent
-            component={View}
-            className="h-24 flex-shrink bg-[#f7fbfe] w-full flex items-center flex-row px-4"
-          >
-            <StyledComponent
-              component={View}
-              className="flex-row justify-between px-3 h-4/6 rounded-3xl w-full items-center bg-white shadow-2xl shadow-slate-400"
-            >
-              <Pressable>
-                <View>
-                  <StyledComponent
-                    component={Feather}
-                    name="home"
-                    size={18}
-                    className="text-slate-500"
-                  />
-                </View>
-              </Pressable>
-              <Pressable onPress={() => console.log("click")}>
-                <View>
-                  <StyledComponent
-                    component={Feather}
-                    name="bar-chart"
-                    size={18}
-                    className="text-slate-500"
-                  />
-                </View>
-              </Pressable>
-              <Pressable onPress={() => console.log("click")}>
-                <View>
-                  <StyledComponent
-                    component={Feather}
-                    name="bell"
-                    size={18}
-                    className="text-slate-500"
-                  />
-                </View>
-              </Pressable>
-              <Pressable
-                onPress={() => {
-                  navigation.navigate("settings");
-                }}
-              >
-                <View>
-                  <StyledComponent
-                    component={Feather}
-                    name="settings"
-                    size={18}
-                    className="text-slate-500"
-                  />
-                </View>
-              </Pressable>
-              <Pressable onPress={() => console.log("click")}>
-                <View>
-                  <StyledComponent
-                    component={Feather}
-                    name="plus"
-                    size={22}
-                    className="text-white font-semibold bg-[#22b1ec] rounded-full p-3 shadow-lg shadow-[#0e3444]"
-                  />
-                </View>
-              </Pressable>
-            </StyledComponent>
-          </StyledComponent>
         </StyledComponent>
       </StyledComponent>
     </AppSafeAreaView>

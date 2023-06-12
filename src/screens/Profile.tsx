@@ -8,7 +8,13 @@ const Profile = () => {
     <AppSafeAreaView>
       <StyledComponent component={View} className="flex px-4">
         <Text>My Profile</Text>
-        {/* <Button></Button> */}
+        {/*     Image      */}
+        <Text>John Doe</Text>
+        <Text>john.doe@example.com</Text>
+        <Text>Settings</Text>
+        <Text>Notification</Text>
+        <Text>Settings</Text>
+        {/* <Text>Settings</Text> */}
       </StyledComponent>
     </AppSafeAreaView>
   );
