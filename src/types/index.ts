@@ -1,6 +1,9 @@
-export type RoutesList =
-  | "home"
-  | "profile"
-  | "progress"
-  | "health_plan"
-  | "settings";
+export type AppStackNavigationParamList = {
+  home: undefined;
+  profile: undefined;
+  progress: undefined;
+  health_plan: undefined;
+  settings: undefined;
+};
+
+export type RoutesList = keyof AppStackNavigationParamList;

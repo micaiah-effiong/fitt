@@ -1,19 +1,13 @@
-import { ParamListBase, useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { StyledComponent } from "nativewind";
 import React, { PropsWithChildren } from "react";
-import {
-  Pressable,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  View,
-} from "react-native";
+import { Pressable, SafeAreaView, StatusBar, View } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
+import { AppStackNavigationParamList } from "../types";
 
 export default ({ children }: PropsWithChildren) => {
   const navigation =
-    useNavigation<NativeStackNavigationProp<ParamListBase, "home", "Stack">>();
+    useNavigation<NavigationProp<AppStackNavigationParamList>>();
   return (
     <StyledComponent
       component={SafeAreaView}
@@ -31,7 +25,7 @@ export default ({ children }: PropsWithChildren) => {
           paddingTop: StatusBar.currentHeight ?? 36,
         }}
       >
-        <StyledComponent component={ScrollView} className={"h-full flex"}>
+        <StyledComponent component={View} className="h-full flex flex-1">
           {children}
         </StyledComponent>
         <StyledComponent
@@ -52,7 +46,7 @@ export default ({ children }: PropsWithChildren) => {
                 />
               </View>
             </Pressable>
-            <Pressable onPress={() => console.log("click")}>
+            <Pressable onPress={() => navigation.navigate("home")}>
               <View>
                 <StyledComponent
                   component={Feather}

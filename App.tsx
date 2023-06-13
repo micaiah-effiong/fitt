@@ -5,8 +5,9 @@ import Home from "./src/screens/Home";
 import Settings from "./src/screens/Setting";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Profile from "./src/screens/Profile";
+import { AppStackNAvigationParamList } from "./src/types";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<AppStackNAvigationParamList>();
 
 export default function App() {
   useEffect(() => {

@@ -9,6 +9,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { ParamListBase } from "@react-navigation/native";
 import AppSafeAreaView from "../components/AppSafeAreaView";
 import Text from "../components/Text";
+import { AppStackNavigationParamList } from "../types";
 
 const StyledIcon = styled(Feather, "text-black");
 
@@ -36,7 +37,7 @@ function StatsCapsule(props: {
   );
 }
 
-type Props = NativeStackScreenProps<ParamListBase, "home", "Stack">;
+type Props = NativeStackScreenProps<AppStackNavigationParamList>;
 
 const Home = ({ navigation }: Props) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -70,24 +71,11 @@ const Home = ({ navigation }: Props) => {
     <AppSafeAreaView>
       <StyledComponent component={GestureHandlerRootView} className="flex-1">
         <StyledComponent component={View} className="flex-1 flex">
-          <StyledComponent
-            component={View}
-            className="h-14 bg-[#edd0ff] w-full px-4"
-          >
+          <StyledComponent component={View} className="h-14  w-full px-4">
             <StyledComponent
               component={View}
-              className="flex flex-row justify-between items-center h-full py-2"
+              className="flex flex-1 flex-row justify-end items-center h-full"
             >
-              <Pressable onPress={() => console.log("click")}>
-                <View>
-                  <StyledComponent
-                    component={Feather}
-                    name="menu"
-                    size={25}
-                    className="text-slate-700"
-                  />
-                </View>
-              </Pressable>
               <Pressable onPress={() => navigation.navigate("profile")}>
                 <StyledComponent
                   component={View}
