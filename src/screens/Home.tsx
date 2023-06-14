@@ -6,7 +6,6 @@ import CircularProgress from "react-native-circular-progress-indicator";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import Feather from "react-native-vector-icons/Feather";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { ParamListBase } from "@react-navigation/native";
 import AppSafeAreaView from "../components/AppSafeAreaView";
 import Text from "../components/Text";
 import { AppStackNavigationParamList } from "../types";
@@ -68,7 +67,7 @@ const Home = ({ navigation }: Props) => {
   );
 
   return (
-    <AppSafeAreaView>
+    <AppSafeAreaView screenName="home">
       <StyledComponent component={GestureHandlerRootView} className="flex-1">
         <StyledComponent component={View} className="flex-1 flex">
           <StyledComponent component={View} className="h-14  w-full px-4">
