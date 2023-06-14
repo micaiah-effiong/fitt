@@ -3,11 +3,15 @@ import { StyledComponent } from "nativewind";
 import React, { PropsWithChildren } from "react";
 import { Pressable, SafeAreaView, StatusBar, View } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
-import { AppStackNavigationParamList } from "../types";
+import { AppRoutesList, AppStackNavigationParamList } from "../types";
 
-export default ({ children }: PropsWithChildren) => {
+export default ({
+  children,
+  screenName,
+}: PropsWithChildren & { screenName: AppRoutesList }) => {
   const navigation =
     useNavigation<NavigationProp<AppStackNavigationParamList>>();
+
   return (
     <StyledComponent
       component={SafeAreaView}
@@ -36,64 +40,55 @@ export default ({ children }: PropsWithChildren) => {
             component={View}
             className="flex-row justify-evenly px-3 h-4/6 w-full items-center bg-white shadow-2xl shadow-slate-400"
           >
-            <Pressable onPress={() => navigation.navigate("profile")}>
-              <View>
-                <StyledComponent
-                  component={Feather}
-                  name="user"
-                  size={18}
-                  className="text-slate-500"
-                />
-              </View>
-            </Pressable>
-            <Pressable onPress={() => navigation.navigate("home")}>
-              <View>
-                <StyledComponent
-                  component={Feather}
-                  name="bar-chart"
-                  size={18}
-                  className="text-slate-500"
-                />
-              </View>
-            </Pressable>
-            <Pressable onPress={() => console.log("click")}>
-              <View>
-                <StyledComponent
-                  component={Feather}
-                  name="clipboard"
-                  size={18}
-                  className="text-slate-500"
-                />
-              </View>
-            </Pressable>
-
-            <Pressable
-              onPress={() => {
-                navigation.navigate("settings");
-              }}
-            >
-              <View>
-                <StyledComponent
-                  component={Feather}
-                  name="menu"
-                  size={18}
-                  className="text-slate-500"
-                />
-              </View>
-            </Pressable>
-            {/* <Pressable onPress={() => console.log("click")}>
-                <View>
-                  <StyledComponent
-                    component={Feather}
-                    name="plus"
-                    size={22}
-                    className="text-white font-semibold bg-[#22b1ec] rounded-full p-3 shadow-lg shadow-[#0e3444]"
-                  />
-                </View>
-              </Pressable> */}
+            <MenuItem
+              iconName="user"
+              screenName={screenName}
+              navigateTo="profile"
+            />
+            <MenuItem
+              iconName="bar-chart"
+              screenName={screenName}
+              navigateTo="home"
+            />
+            <MenuItem iconName="clipboard" screenName={screenName} />
+            <MenuItem
+              iconName="menu"
+              screenName={screenName}
+              navigateTo="settings"
+            />
           </StyledComponent>
         </StyledComponent>
       </StyledComponent>
     </StyledComponent>
   );
 };
+
+function MenuItem(prop: {
+  iconName: string;
+  screenName: AppRoutesList;
+  navigateTo?: AppRoutesList;
+}) {
+  const navigation =
+    useNavigation<NavigationProp<AppStackNavigationParamList>>();
+  const isActive = prop.screenName == prop.navigateTo;
+  return (
+    <StyledComponent
+      component={Pressable}
+      className={`${
+        isActive ? "border-b-4 border-b-blue-200" : ""
+      } h-full flex justify-center px-3`}
+      onPress={() => {
+        if (prop.navigateTo) {
+          navigation.navigate(prop.navigateTo);
+        }
+      }}
+    >
+      <StyledComponent
+        component={Feather}
+        name={prop.iconName}
+        size={isActive ? 20 : 18}
+        className="text-slate-500"
+      />
+    </StyledComponent>
+  );
+}

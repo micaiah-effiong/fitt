@@ -6,4 +6,4 @@ export type AppStackNavigationParamList = {
   settings: undefined;
 };
 
-export type RoutesList = keyof AppStackNavigationParamList;
+export type AppRoutesList = keyof AppStackNavigationParamList;
