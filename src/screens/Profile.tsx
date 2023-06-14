@@ -1,11 +1,14 @@
 import { StyledComponent } from "nativewind";
-import { Image, ScrollView, View } from "react-native";
+import { Image, Pressable, ScrollView, View } from "react-native";
 import Text from "../components/Text";
 import AppSafeAreaView from "../components/AppSafeAreaView";
+import Feather from "react-native-vector-icons/Feather";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { AppRoutesList, AppStackNavigationParamList } from "../types";
 
 const Profile = () => {
   return (
-    <AppSafeAreaView>
+    <AppSafeAreaView screenName="profile">
       <StyledComponent component={View} className="flex-1">
         <StyledComponent
           component={ScrollView}
@@ -40,13 +43,17 @@ const Profile = () => {
               </StyledComponent>
             </StyledComponent>
           </StyledComponent>
-          <StyledComponent component={View} className="p-3">
-            <Text>John Doe</Text>
-            <Text>john.doe@example.com</Text>
-            <Text>Settings</Text>
-            <Text>Notification</Text>
-            <Text>Settings</Text>
-            <Text>Settings</Text>
+          <StyledComponent component={View} className="py-3">
+            <ProfileListItems
+              text="Settings"
+              iconName="settings"
+              navigateTo="settings"
+            />
+            <ProfileListItems text="Reminder" iconName="bell" />
+            {/* ---- */}
+            <ProfileListItems text="Invite a friend" iconName="share-2" />
+            <ProfileListItems text="Help" iconName="message-circle" />
+            <ProfileListItems text="Log Out" iconName="log-out" />
             {/* <Text>Settings</Text> */}
           </StyledComponent>
         </StyledComponent>
@@ -54,5 +61,34 @@ const Profile = () => {
     </AppSafeAreaView>
   );
 };
+
+function ProfileListItems(prop: {
+  text: string;
+  iconName: string;
+  navigateTo?: AppRoutesList;
+}) {
+  const navigation =
+    useNavigation<NavigationProp<AppStackNavigationParamList>>();
+
+  return (
+    <StyledComponent
+      component={Pressable}
+      className="py-5 px-5 active:bg-sky-900 flex-row space-x-2 items-center rounded"
+      onPress={() => {
+        if (prop.navigateTo) {
+          navigation.navigate(prop.navigateTo);
+        }
+      }}
+    >
+      <StyledComponent
+        component={Feather}
+        name={prop.iconName}
+        size={18}
+        className="text-orange-700 font-semibold"
+      />
+      <Text className="font-semibold">{prop.text}</Text>
+    </StyledComponent>
+  );
+}
 
 export default Profile;
