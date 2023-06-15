@@ -24,7 +24,7 @@ const Settings = () => {
               component={Feather}
               name="arrow-left"
               size={30}
-              className="font-semibold"
+              className="font-semibold text-black"
             />
           </StyledComponent>
           <Text className="text-2xl font-bold">Settings</Text>
@@ -65,7 +65,7 @@ function SettingsMenuItem(prop: {
     >
       <StyledComponent
         component={View}
-        className=" py-5 border-b-[0.5px] border-b-gray-300 flex-row space-x-2 items-center "
+        className=" py-5 border-b-[0.5px] border-b-gray-300 flex-row space-x-2 items-center"
       >
         <StyledComponent
           component={Feather}
