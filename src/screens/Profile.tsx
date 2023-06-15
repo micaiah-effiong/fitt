@@ -10,11 +10,11 @@ const Profile = () => {
   return (
     <AppSafeAreaView screenName="profile">
       <StyledComponent component={View} className="flex-1">
-        <StyledComponent
-          component={ScrollView}
-          contentContainerStyle={{ flex: 1 }}
-        >
-          <StyledComponent component={View} className="bg-sky-900 h-[40%]">
+        <StyledComponent component={ScrollView} className="flex-grow">
+          <StyledComponent
+            component={View}
+            className="bg-sky-900 h-[300px] flex-1"
+          >
             <StyledComponent
               component={View}
               className="flex justify-center items-center flex-grow"
@@ -43,7 +43,7 @@ const Profile = () => {
               </StyledComponent>
             </StyledComponent>
           </StyledComponent>
-          <StyledComponent component={View} className="py-3">
+          <StyledComponent component={View} className="py-3 flex-1">
             <ProfileListItems
               text="Settings"
               iconName="settings"
