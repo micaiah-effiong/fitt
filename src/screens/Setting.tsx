@@ -81,7 +81,7 @@ function SettingsMenuItem(prop: {
 
 function MenuSectionTitle(prop: { text: string }) {
   return (
-    <StyledComponent component={View} className="py-5 px-5">
+    <StyledComponent component={View} className="py-5 px-5 mt-3">
       <Text className="font-semibold text-lg text-gray-600 uppercase">
         {prop.text}
       </Text>
