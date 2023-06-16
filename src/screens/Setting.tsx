@@ -122,6 +122,8 @@ function SettingsMenuItem(prop: {
             component={Switch}
             value={toggle}
             onValueChange={handleToggle}
+            trackColor={{ false: "#767577", true: "#81b0ff" }}
+            thumbColor={toggle ? undefined : "#f4f3f4"}
           />
         )}
       </StyledComponent>
