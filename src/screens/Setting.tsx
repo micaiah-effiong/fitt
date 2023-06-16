@@ -106,7 +106,7 @@ function SettingsMenuItem(prop: {
             size={18}
             className="text-orange-700 font-semibold"
           />
-          <Text className="font-semibold">{prop.text}</Text>
+          <Text className="font-semibold text-gray-600">{prop.text}</Text>
         </StyledComponent>
         {prop.activityType === "PAGE_NAVIGATION" ? (
           <StyledComponent component={View} className="">
@@ -133,10 +133,8 @@ function SettingsMenuItem(prop: {
 
 function MenuSectionTitle(prop: { text: string }) {
   return (
-    <StyledComponent component={View} className="py-5 px-5 mt-3">
-      <Text className="font-semibold text-lg text-gray-600 uppercase">
-        {prop.text}
-      </Text>
+    <StyledComponent component={View} className="py-5 px-5 mt-6">
+      <Text className="font-semibold text-lg uppercase">{prop.text}</Text>
     </StyledComponent>
   );
 }
