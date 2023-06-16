@@ -5,6 +5,8 @@ import AppSafeAreaView from "../components/AppSafeAreaView";
 import { AppRoutesList, AppStackNavigationParamList } from "../types";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import Feather from "react-native-vector-icons/Feather";
+import { Switch } from "react-native";
+import { useState } from "react";
 
 const Settings = () => {
   const navigation =
@@ -32,13 +34,38 @@ const Settings = () => {
         <StyledComponent component={ScrollView} className="flex-grow">
           {/* <Button></Button> */}
           <MenuSectionTitle text="General" />
-          <SettingsMenuItem text="Account" iconName="user" />
-          <SettingsMenuItem text="Notifications" iconName="bell" />
-          <SettingsMenuItem text="Apprearance" iconName="eye" />
-          <SettingsMenuItem text="Privacy & Security" iconName="lock" />
+          <SettingsMenuItem
+            activityType="PAGE_NAVIGATION"
+            text="Account"
+            iconName="user"
+          />
+          <SettingsMenuItem
+            activityType="PAGE_NAVIGATION"
+            text="Apprearance"
+            iconName="eye"
+          />
+          <SettingsMenuItem
+            activityType="PAGE_NAVIGATION"
+            text="Privacy & Security"
+            iconName="lock"
+          />
+          <MenuSectionTitle text="Notification" />
+          <SettingsMenuItem
+            activityType="TOGGLE"
+            text="Allow Email notifications"
+            iconName="bell"
+          />
           <MenuSectionTitle text="Feedback" />
-          <SettingsMenuItem text="About" iconName="info" />
-          <SettingsMenuItem text="Send feedback" iconName="send" />
+          <SettingsMenuItem
+            activityType="PAGE_NAVIGATION"
+            text="About"
+            iconName="info"
+          />
+          <SettingsMenuItem
+            activityType="PAGE_NAVIGATION"
+            text="Send feedback"
+            iconName="send"
+          />
         </StyledComponent>
       </StyledComponent>
     </AppSafeAreaView>
@@ -49,10 +76,15 @@ function SettingsMenuItem(prop: {
   text: string;
   iconName: string;
   navigateTo?: AppRoutesList;
+  activityType: "TOGGLE" | "PAGE_NAVIGATION";
 }) {
   const navigation =
     useNavigation<NavigationProp<AppStackNavigationParamList>>();
+  const [toggle, setToggle] = useState(false);
 
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
   return (
     <StyledComponent
       component={Pressable}
@@ -65,15 +97,33 @@ function SettingsMenuItem(prop: {
     >
       <StyledComponent
         component={View}
-        className=" py-5 border-b-[0.5px] border-b-gray-300 flex-row space-x-2 items-center"
+        className=" py-5 border-b-[0.5px] border-b-gray-300 flex-row justify-between items-center"
       >
-        <StyledComponent
-          component={Feather}
-          name={prop.iconName}
-          size={18}
-          className="text-orange-700 font-semibold"
-        />
-        <Text className="font-semibold">{prop.text}</Text>
+        <StyledComponent component={View} className="flex-row space-x-2">
+          <StyledComponent
+            component={Feather}
+            name={prop.iconName}
+            size={18}
+            className="text-orange-700 font-semibold"
+          />
+          <Text className="font-semibold">{prop.text}</Text>
+        </StyledComponent>
+        {prop.activityType === "PAGE_NAVIGATION" ? (
+          <StyledComponent component={View} className="">
+            <StyledComponent
+              component={Feather}
+              name="arrow-right"
+              size={18}
+              className="text-orange-700 font-semibold"
+            />
+          </StyledComponent>
+        ) : (
+          <StyledComponent
+            component={Switch}
+            value={toggle}
+            onValueChange={handleToggle}
+          />
+        )}
       </StyledComponent>
     </StyledComponent>
   );
