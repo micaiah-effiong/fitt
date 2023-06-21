@@ -13,59 +13,61 @@ const Settings = () => {
     useNavigation<NavigationProp<AppStackNavigationParamList>>();
   return (
     <AppSafeAreaView screenName="settings">
-      <StyledComponent component={View} className="flex flex-1 bg-white">
-        <StyledComponent
-          component={View}
-          className="h-[25%] bg-[#edd0ff] px-6 flex justify-evenly"
-        >
+      <StyledComponent component={View} className="bg-white flex-1">
+        <StyledComponent component={ScrollView} className="bg-white flex-grow">
           <StyledComponent
-            component={Pressable}
-            onPress={() => navigation.goBack()}
+            component={View}
+            className="h-[180px] bg-[#edd0ff] px-6 flex-1 justify-evenly"
           >
             <StyledComponent
-              component={Feather}
-              name="arrow-left"
-              size={30}
-              className="font-semibold text-black"
+              component={Pressable}
+              onPress={() => navigation.goBack()}
+            >
+              <StyledComponent
+                component={Feather}
+                name="arrow-left"
+                size={30}
+                className="font-semibold text-black"
+              />
+            </StyledComponent>
+            <Text className="text-2xl font-bold">Settings</Text>
+          </StyledComponent>
+          <StyledComponent component={View} className="flex-1 border-5">
+            {/* <Button></Button> */}
+            <MenuSectionTitle text="General" />
+            <SettingsMenuItem
+              activityType="PAGE_NAVIGATION"
+              text="Account"
+              iconName="user"
+            />
+            <SettingsMenuItem
+              activityType="PAGE_NAVIGATION"
+              text="Apprearance"
+              iconName="eye"
+            />
+            <SettingsMenuItem
+              activityType="PAGE_NAVIGATION"
+              text="Privacy & Security"
+              iconName="lock"
+            />
+            <MenuSectionTitle text="Notification" />
+            <SettingsMenuItem
+              activityType="TOGGLE"
+              text="Allow Email notifications"
+              iconName="bell"
+            />
+            <MenuSectionTitle text="Feedback" />
+            <SettingsMenuItem
+              activityType="PAGE_NAVIGATION"
+              text="About"
+              iconName="info"
+            />
+            <SettingsMenuItem
+              activityType="PAGE_NAVIGATION"
+              text="Send feedback"
+              iconName="send"
             />
           </StyledComponent>
-          <Text className="text-2xl font-bold">Settings</Text>
-        </StyledComponent>
-        <StyledComponent component={ScrollView} className="flex-grow">
-          {/* <Button></Button> */}
-          <MenuSectionTitle text="General" />
-          <SettingsMenuItem
-            activityType="PAGE_NAVIGATION"
-            text="Account"
-            iconName="user"
-          />
-          <SettingsMenuItem
-            activityType="PAGE_NAVIGATION"
-            text="Apprearance"
-            iconName="eye"
-          />
-          <SettingsMenuItem
-            activityType="PAGE_NAVIGATION"
-            text="Privacy & Security"
-            iconName="lock"
-          />
-          <MenuSectionTitle text="Notification" />
-          <SettingsMenuItem
-            activityType="TOGGLE"
-            text="Allow Email notifications"
-            iconName="bell"
-          />
-          <MenuSectionTitle text="Feedback" />
-          <SettingsMenuItem
-            activityType="PAGE_NAVIGATION"
-            text="About"
-            iconName="info"
-          />
-          <SettingsMenuItem
-            activityType="PAGE_NAVIGATION"
-            text="Send feedback"
-            iconName="send"
-          />
         </StyledComponent>
       </StyledComponent>
     </AppSafeAreaView>
