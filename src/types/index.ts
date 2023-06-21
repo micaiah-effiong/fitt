@@ -4,6 +4,7 @@ export type AppStackNavigationParamList = {
   progress: undefined;
   health_plan: undefined;
   settings: undefined;
+  activities: undefined;
 };
 
 export type AppRoutesList = keyof AppStackNavigationParamList;

@@ -9,9 +9,6 @@ export default ({
   children,
   screenName,
 }: PropsWithChildren & { screenName: AppRoutesList }) => {
-  const navigation =
-    useNavigation<NavigationProp<AppStackNavigationParamList>>();
-
   return (
     <StyledComponent
       component={SafeAreaView}
@@ -50,7 +47,11 @@ export default ({
               screenName={screenName}
               navigateTo="home"
             />
-            <MenuItem iconName="clipboard" screenName={screenName} />
+            <MenuItem
+              iconName="clipboard"
+              navigateTo="activities"
+              screenName={screenName}
+            />
             <MenuItem
               iconName="menu"
               screenName={screenName}

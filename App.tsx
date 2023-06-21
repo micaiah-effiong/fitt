@@ -6,6 +6,7 @@ import Settings from "./src/screens/Setting";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Profile from "./src/screens/Profile";
 import { AppStackNavigationParamList } from "./src/types";
+import Activities from "./src/screens/Activity";
 
 const Stack = createNativeStackNavigator<AppStackNavigationParamList>();
 
@@ -28,6 +29,7 @@ export default function App() {
         <Stack.Screen name="profile" component={Profile} />
         <Stack.Screen name="home" component={Home} />
         <Stack.Screen name="settings" component={Settings} />
+        <Stack.Screen name="activities" component={Activities} />
       </Stack.Navigator>
     </NavigationContainer>
   );
