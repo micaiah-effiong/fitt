@@ -4,11 +4,18 @@ import React, { PropsWithChildren } from "react";
 import { Pressable, SafeAreaView, StatusBar, View } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
 import { AppRoutesList, AppStackNavigationParamList } from "../types";
+import Text from "./Text";
 
-export default ({
-  children,
-  screenName,
-}: PropsWithChildren & { screenName: AppRoutesList }) => {
+type Prop = {
+  screenName: AppRoutesList;
+  showAppBar?: boolean;
+} & PropsWithChildren;
+export default (prop: Prop) => {
+  const { children, screenName, showAppBar = false } = prop;
+
+  const navigation =
+    useNavigation<NavigationProp<AppStackNavigationParamList>>();
+
   return (
     <StyledComponent
       component={SafeAreaView}
@@ -27,6 +34,27 @@ export default ({
         }}
       >
         <StyledComponent component={View} className="h-full flex flex-1">
+          {showAppBar && (
+            <StyledComponent
+              component={View}
+              className="flex-row items-center justify-between px-1 py-3 bg-transparent"
+            >
+              <Pressable
+                onPress={() => {
+                  navigation.goBack();
+                }}
+              >
+                <StyledComponent
+                  component={Feather}
+                  name="arrow-left"
+                  className="text-3xl text-black"
+                />
+              </Pressable>
+              <Text className="text-lg font-semibold capitalize">
+                {prop.screenName}
+              </Text>
+            </StyledComponent>
+          )}
           {children}
         </StyledComponent>
         <StyledComponent
