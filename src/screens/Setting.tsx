@@ -9,17 +9,17 @@ import { Switch } from "react-native";
 import { useState } from "react";
 
 const Settings = () => {
-  const navigation =
-    useNavigation<NavigationProp<AppStackNavigationParamList>>();
+  // const navigation =
+  //   useNavigation<NavigationProp<AppStackNavigationParamList>>();
   return (
-    <AppSafeAreaView screenName="settings">
+    <AppSafeAreaView screenName="settings" showAppBar={true}>
       <StyledComponent component={View} className="bg-white flex-1">
         <StyledComponent component={ScrollView} className="bg-white flex-grow">
           <StyledComponent
             component={View}
-            className="h-[180px] bg-[#edd0ff] px-6 flex-1 justify-evenly"
+            className="bg-[#edd0ff] px-6 flex-1 justify-evenly"
           >
-            <StyledComponent
+            {/* <StyledComponent
               component={Pressable}
               onPress={() => navigation.goBack()}
             >
@@ -29,8 +29,9 @@ const Settings = () => {
                 size={30}
                 className="font-semibold text-black"
               />
-            </StyledComponent>
+            </StyledComponent> 
             <Text className="text-2xl font-bold">Settings</Text>
+        */}
           </StyledComponent>
           <StyledComponent component={View} className="flex-1 border-5">
             {/* <Button></Button> */}
