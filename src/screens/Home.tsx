@@ -106,7 +106,7 @@ const Home = ({ navigation }: Props) => {
               <View>
                 <StyledComponent
                   component={View}
-                  className="w-full rounded-full bg-white px-2 flex-row items-center space-x-3 justify-evenly"
+                  className="w-full rounded-md bg-white px-2 flex-row items-center space-x-3 justify-evenly"
                 >
                   <StyledComponent
                     component={Feather}
@@ -123,7 +123,7 @@ const Home = ({ navigation }: Props) => {
               </View>
               <StyledComponent
                 component={View}
-                className="bg-[#734acc] rounded-2xl space-y-2 p-5 w-full"
+                className="bg-[#734acc] rounded-md space-y-2 p-5 w-full"
               >
                 <StyledComponent component={View} className="flex-row">
                   <CircularProgress
