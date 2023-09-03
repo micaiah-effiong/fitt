@@ -28,16 +28,16 @@ export default (prop: Prop) => {
       />
       <StyledComponent
         component={View}
-        className={"h-full flex"}
+        className="h-full flex"
         style={{
-          paddingTop: StatusBar.currentHeight ?? 36,
+          paddingTop: Math.max(40, StatusBar.currentHeight ?? 36),
         }}
       >
         <StyledComponent component={View} className="h-full flex flex-1">
           {showAppBar && (
             <StyledComponent
               component={View}
-              className="flex-row items-center justify-between px-1 py-3 bg-transparent"
+              className="flex-row items-center justify-between px-1 py-3 bg-transparent bg-red-500"
             >
               <Pressable
                 onPress={() => {
