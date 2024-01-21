@@ -17,28 +17,12 @@ export default (prop: Prop) => {
     useNavigation<NavigationProp<AppStackNavigationParamList>>();
 
   return (
-    <StyledComponent
-      component={SafeAreaView}
-      className={`flex-1 bg-[#edd0ff] text-black`}
-    >
-      <StatusBar
-        translucent
-        backgroundColor={"transparent"}
-        barStyle={"dark-content"}
-      />
-      <StyledComponent
-        component={View}
-        className="h-full flex"
-        style={{
-          paddingTop: Math.max(40, StatusBar.currentHeight ?? 36),
-        }}
-      >
-        <StyledComponent component={View} className="h-full flex flex-1">
+    <SafeAreaView className="flex-1 bg-[#edd0ff] text-black">
+      <StatusBar backgroundColor="#edd0ff" barStyle="dark-content" />
+      <View className="flex-1">
+        <View className="flex-1">
           {showAppBar && (
-            <StyledComponent
-              component={View}
-              className="flex-row items-center justify-between px-1 py-3 bg-transparent bg-red-500"
-            >
+            <View className="flex-row items-center justify-between px-1 py-3 bg-transparent bg-[#edd0ff]">
               <Pressable
                 onPress={() => {
                   navigation.goBack();
@@ -53,18 +37,12 @@ export default (prop: Prop) => {
               <Text className="text-lg font-semibold capitalize">
                 {prop.screenName}
               </Text>
-            </StyledComponent>
+            </View>
           )}
           {children}
-        </StyledComponent>
-        <StyledComponent
-          component={View}
-          className="h-24 flex-shrink bg-[#f7fbfe] w-full flex items-center flex-row"
-        >
-          <StyledComponent
-            component={View}
-            className="flex-row justify-evenly px-3 h-4/6 w-full items-center bg-white shadow-2xl shadow-slate-400"
-          >
+        </View>
+        <View className="h-24 flex-shrink bg-[#f7fbfe] w-full flex items-center flex-row">
+          <View className="flex-row justify-evenly px-3 h-4/6 w-full items-center bg-white shadow-2xl shadow-slate-400">
             <MenuItem
               iconName="user"
               screenName={screenName}
@@ -85,10 +63,10 @@ export default (prop: Prop) => {
               screenName={screenName}
               navigateTo="settings"
             />
-          </StyledComponent>
-        </StyledComponent>
-      </StyledComponent>
-    </StyledComponent>
+          </View>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -101,8 +79,7 @@ function MenuItem(prop: {
     useNavigation<NavigationProp<AppStackNavigationParamList>>();
   const isActive = prop.screenName == prop.navigateTo;
   return (
-    <StyledComponent
-      component={Pressable}
+    <Pressable
       className={`${
         isActive ? "border-b-4 border-b-blue-200" : ""
       } h-full flex justify-center px-3`}
@@ -118,6 +95,6 @@ function MenuItem(prop: {
         size={isActive ? 20 : 18}
         className="text-slate-500"
       />
-    </StyledComponent>
+    </Pressable>
   );
 }
